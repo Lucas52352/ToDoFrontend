@@ -1,24 +1,11 @@
-import { useEffect, useState } from 'react'
-import { getTaskRequest } from '../api/tasks'
-import { Task } from '../interfaces/task.interface';
 import TaskItem from './TaskItem';
+import { useTasks } from '../context/userTasks';
 
 const TaskList = () => {
 
-  const [tasks, setTasks] = useState<Task[]>([])
+  const { tasks } = useTasks()  
 
-  useEffect(() => {
 
-    getTaskRequest()
-      .then((res: Response) => {
-        if (!res.ok) {
-          throw new Error(`HTTP error! Status: ${res.status}`);
-        }
-        return res.json();
-      })
-      .then((data: any) => setTasks(data))
-      .catch((error: Error) => console.error(error));
-  }, []);
 
   return (
     <div>
