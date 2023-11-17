@@ -1,9 +1,11 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
 import { createTaskRequest } from '../api/tasks'
+import React from 'react'
+import { Task } from '../interfaces/task.interface'
 
 const TaskForm = () => {
 
-    const [task, setTask] = useState({
+    const [task, setTask] = useState<Task>({
         title: '',
         description: '',
         done: false,
